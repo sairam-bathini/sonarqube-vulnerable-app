@@ -14,9 +14,16 @@ public class VulnerableApp {
         String password = scanner.nextLine();
 
         try {
+            String dbUrl = System.getenv("DB_URL");
+            String dbUser = System.getenv("DB_USER");
+            String dbPassword = System.getenv("DB_PASSWORD");
+
+            Connection conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+            
             // Hardcoded credentials (Bad Practice)
-            Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/testdb", "root", "root123");
+            //Connection conn = DriverManager.getConnection(
+              //      "jdbc:mysql://localhost:3306/testdb", "root", "root123");
+        
 
             Statement stmt = conn.createStatement();
 
